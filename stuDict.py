@@ -1,49 +1,48 @@
 print("STUDENT MANAGEMENT SYSTEM")
 studentdata = {}
+def addfun():
+    
+        studict = {}
+        stuid = input("Enter student Id: ")
+        name = input("Enter Your Name: ")
+        age = input("Enter Your Age: ")
+        course = input("Enter Your Course: ")
+        
+        studict["Name"] = name
+        studict["Age"] = age
+        studict["Course"] = course
+        studentdata[stuid] = studict
+def showfun():
+     print(studentdata)
+
 
 while True:
     
     userinput = input("What do you want to do? \n-add \n-update \n-delete \n-show \n-exit\n ")
     if userinput == "add":
-        stuid = input("Enter student Id: ")
-        name = input("Enter Your Name: ")
-        age = input("Enter Your Age: ")
-        course = input("Enter Your Course: ")
-        studentdata["Stuid"] = stuid
-        studentdata["Name"] = name
-        studentdata["Age"] = age
-        studentdata["Course"] = course
-
+         addfun()
     elif userinput == "update":
-        toupd = input("What do you want to update \"stuid\" \"name\" \"age\" \"course\" : ")
-        if "stuid" in toupd:
-            newid = input("Enter new Id : ")
-            studentdata["Stuid"] = newid
-        elif "name" in toupd:
-            newname = input("Enter new Name : ")
-            studentdata["Name"] = newname
-        elif "age" in toupd:
-            newage = input("Enter new Age : ")
-            studentdata["Age"] = newage
-        elif "course" in toupd:
-            newcourse = input("Enter new Course : ")
-            studentdata["Course"] = newcourse
-        else:
-            print("Wrong Input")
+        stuid = input("What Student id to update : ")
+        if stuid in studentdata:
+          student = studentdata[stuid]
+          newinput = input("what do you want to update? \n-Name \n-Age \n-Course :\n")
+          
+          if newinput == "Name":
+               value = input("Enter new name : ")
+               student["Name"] = value
+          elif newinput == "Age":
+               value = input("Enter new Age : ")
+               student["Age"]  = value
+          elif newinput == "Course":
+               value = input("Enter new Course : ")
+               student["Course"] = value
+
     elif userinput == "delete":
-        todel = input("enter what do you want to delete \"stuid\" \"name\" \"age\" \"course\" : ")
-        if "stuid" in todel:
-            del studentdata["Stuid"]
-        elif "name" in todel:
-            del studentdata["Name"]
-        elif "age" in todel:
-            del studentdata["Age"]
-        elif "course" in todel:
-            del studentdata["Course"]
-        else:
-            print("Wrong Input")
+             stuid = input("enter id to delete : ")
+             if stuid in studentdata:
+                  del studentdata[stuid]
     elif userinput == "show":
-        print(studentdata)        
+            showfun()      
     elif userinput == "exit":
         print("Program Exited")
         break
