@@ -14,6 +14,24 @@ def addfun():
         studentdata[stuid] = studict
 def showfun():
      print(studentdata)
+def updatefun():
+      
+    if stuid in studentdata:
+          student = studentdata[stuid]
+          newinput = input("what do you want to update? \n-Name \n-Age \n-Course :\n")
+          
+          if newinput == "Name":
+               value = input("Enter new Name : ")
+               student["Name"] = value
+          elif newinput == "Age":
+               value = input("Enter new Age : ")
+               student["Age"]  = value
+          elif newinput == "Course":
+               value = input("Enter new Course : ")
+               student["Course"] = value  
+def delfun():
+      if stuid in studentdata:
+                  del studentdata[stuid]
 
 
 while True:
@@ -22,25 +40,13 @@ while True:
     if userinput == "add":
          addfun()
     elif userinput == "update":
-        stuid = input("What Student id to update : ")
-        if stuid in studentdata:
-          student = studentdata[stuid]
-          newinput = input("what do you want to update? \n-Name \n-Age \n-Course :\n")
-          
-          if newinput == "Name":
-               value = input("Enter new name : ")
-               student["Name"] = value
-          elif newinput == "Age":
-               value = input("Enter new Age : ")
-               student["Age"]  = value
-          elif newinput == "Course":
-               value = input("Enter new Course : ")
-               student["Course"] = value
+          stuid = input("What Student id to update : ")
+          updatefun()
+        
 
     elif userinput == "delete":
              stuid = input("enter id to delete : ")
-             if stuid in studentdata:
-                  del studentdata[stuid]
+             delfun()
     elif userinput == "show":
             showfun()      
     elif userinput == "exit":
